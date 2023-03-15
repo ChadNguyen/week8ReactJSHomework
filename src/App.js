@@ -6,6 +6,10 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import Home from './views/Home'
 import Inventory from './views/Inventory'
 import Profile from './views/Profile'
+import Cars from './views/Cars'
+import SingleCarData from './views/SingleCarData'
+import NotFound404 from './views/NotFound404'
+
 
 
 function App() {
@@ -24,6 +28,10 @@ function App() {
           <li>
             <Link to="/profile">Profile</Link>
           </li>
+
+          <li>
+            <Link to="/cars">Cars</Link>
+          </li>
         </ul>
       </nav>
 
@@ -31,6 +39,10 @@ function App() {
         <Route path = "/" element = {<Home />} />
         <Route path = "/inventory" element = {<Inventory />} />
         <Route path = "/profile" element = {<Profile />} />
+        <Route path= "/cars" element= {<Cars />} />
+        <Route path= "/cars/:id" element= {<SingleCarData />} />
+
+        <Route path= "/NotFound404" element= {<NotFound404 />} />
       </Routes>
     </BrowserRouter>
   )
