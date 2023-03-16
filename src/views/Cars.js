@@ -1,22 +1,20 @@
-import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useState, useEffect, useContext } from 'react'
+import { DataContext } from '../contexts/DataProvider'
 
 export default function Car() {
     const [carData, setCarData] = useState({})
     const [loadingState, setLoadingState] = useState("LOADING")
     const [carId, setCarId] = useState(1)
     const [currSearch, setCurrSearch] = useState(null)
-    const { id } = useParams()
+    const { getCarData } = useContext(DataContext)
     
-
     useEffect(() => {
-        async function getCarData() {
-            const response = await fetch (`https://my-json-server.typicode.com/Llang8/cars-api/cars/${carId}`)
-            const data = await response.json()
+        async function handleLoad() {
+            const data = await getCarData(carId)
             setCarData(data)
             setLoadingState("LOADED")
         }
-        getCarData()
+        handleLoad()
 
     }, [carId])
 
